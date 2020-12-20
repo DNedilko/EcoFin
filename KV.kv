@@ -1,0 +1,226 @@
+ScreenManager:
+    LogIn:
+    Registration:
+    Main:
+    AccInfo:
+
+
+<LogIn>:
+    name: 'LOG'
+    login:login
+    passw:passw
+
+    MDLabel:
+        color: 0,100/255.0,0,1
+        text: "Eco Life"
+        pos_hint: {"center_y": 0.63}
+        halign: 'center'
+        font_style: "H3"
+
+    MDIcon:
+        icon:"leaf"
+        halign: 'center'
+        pos_hint: {'center_y':0.75}
+        color: 0,100/255.0,0,1
+        font_size:100
+
+    MDRoundFlatButton:
+        text: "Log In"
+        pos_hint: {"center_x": 0.50, "center_y":0.3}
+        md_bg_color: 0,100/255.0,0,1
+        text_color: 1,1,1,1
+        on_press:
+
+            root.manager.transition.direction = "right"
+            app.root.current='main' if root.loginBtn()=='1' else None
+
+    MDIconButton:
+        icon:'account-plus'
+        pos_hint: {"center_x": 0.5, "center_y":0.25}
+        text_color: 0,100/255.0,0,230/255.0
+        font_size: 50
+        on_release:
+
+            root.manager.transition.direction = "left"
+            app.root.current='registration'
+
+    MDTextFieldRound:
+        id:login
+        hint_text: "login"
+        hint_text_color: 0,100/255.0,0,1
+        color_active: 213/255.0,245/255.0,223/255.0,96/255.0
+        normal_color: 1,1,1,1
+        line_color: 0,100/255.0,0,1
+        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+        color: 1,1,1,1
+        size_hint: 0.4, None
+
+    MDTextFieldRound:
+        id:passw
+        hint_text: "password"
+        color_active: 213/255.0,245/255.0,223/255.0,96/255.0
+        normal_color: 1,1,1,1
+        line_color: 0,100/255.0,0,1
+        pos_hint: {"center_x": 0.5, "center_y": 0.44}
+        color: 1,1,1,1
+        size_hint: 0.4, None
+
+<Registration>:
+    name: 'registration'
+    login:login
+    email:email
+    passw:passw
+    city:city
+    MDIcon:
+        icon:"leaf"
+        halign: 'center'
+        pos_hint: {'center_y':0.8}
+        color: 0,100/255.0,0,100/255.0
+        font_size:60
+    MDLabel:
+        color: 0,100/255.0,0,100/255.0
+        text: "Eco Life"
+        pos_hint: {"center_y": 0.72}
+        halign: 'center'
+        font_style: "H4"
+
+    MDLabel:
+        color: 0,100/255.0,0,1
+        text: "REGISTRATION"
+        pos_hint: {"center_y": 0.63}
+        halign: 'center'
+        font_style: "H5"
+
+    MDTextFieldRound:
+        id:login
+        hint_text: "login"
+        color_active: 213/255.0,245/255.0,223/255.0,96/255.0
+        normal_color: 1,1,1,1
+        line_color: 0,100/255.0,0,1
+        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+        color: 1,1,1,1
+        size_hint: 0.4, None
+
+    MDTextFieldRound:
+        id:city
+        hint_text: "city"
+        color_active: 213/255.0,245/255.0,223/255.0,96/255.0
+        normal_color: 1,1,1,1
+        line_color: 0,100/255.0,0,1
+        pos_hint: {"center_x": 0.5, "center_y": 0.44}
+        color: 1,1,1,1
+        size_hint: 0.4, None
+
+    MDTextFieldRound:
+        id:email
+        hint_text: "email"
+        color_active: 213/255.0,245/255.0,223/255.0,96/255.0
+        normal_color: 1,1,1,1
+        line_color: 0,100/255.0,0,1
+        pos_hint: {"center_x": 0.5, "center_y": 0.38}
+        color: 1,1,1,1
+        size_hint: 0.4, None
+
+    MDTextFieldRound:
+        id:passw
+        hint_text: "password"
+        color_active: 213/255.0,245/255.0,223/255.0,96/255.0
+        normal_color: 1,1,1,1
+        line_color: 0,100/255.0,0,1
+        pos_hint: {"center_x": 0.5, "center_y": 0.32}
+        color: 1,1,1,1
+        size_hint: 0.4, None
+
+    MDRoundFlatButton:
+        text: "Sign Up"
+        pos_hint: {"center_x": 0.5, "center_y":0.22}
+        md_bg_color: 0,100/255.0,0,1
+        text_color: 1,1,1,1
+        on_release:
+            root.manager.transition.direction = "right"
+            app.root.current='LOG' if root.creation()=='1' else None
+
+
+<Main>:
+    name: 'main'
+
+    MDBottomNavigation:
+        panel_color:  0,100/255.0,0,1
+
+        MDBottomNavigationItem:
+            name: 'shop'
+            icon:"shopping"
+            MDToolbar:
+                md_bg_color: 0,100/255.0,0,1
+                pos_hint: {"center_y": 0.95}
+                elevation: 5
+                right_action_items: [["account", lambda x: x]]
+
+
+        MDBottomNavigationItem:
+            name: 'stations'
+            icon:"map-search"
+
+            MDToolbar:
+                md_bg_color: 0,100/255.0,0,1
+                pos_hint: {"center_y": 0.95}
+                icon:"account"
+                elevation: 5
+                right_action_items: [["account", lambda x: x]]
+
+        MDBottomNavigationItem:
+            name: 'mainpage'
+            icon:"recycle"
+            icon_size:50
+
+            MDToolbar:
+                md_bg_color: 0,100/255.0,0,1
+                pos_hint: {"center_y": 0.95}
+                icon:"account"
+                elevation: 5
+                right_action_items: [["account", lambda x: x]]
+
+        MDBottomNavigationItem:
+            name: 'records'
+            icon:"sort"
+            MDToolbar:
+                md_bg_color: 0,100/255.0,0,1
+                pos_hint: {"center_y": 0.95}
+                icon:"account"
+                elevation: 5
+                right_action_items: [["account", lambda x: x]]
+                on_action_button: app.root.current='acc'
+
+        MDBottomNavigationItem:
+            name: 'mark'
+            icon:"magnify"
+            icon_size:50
+            MDToolbar:
+                md_bg_color: 0,100/255.0,0,1
+                pos_hint: {"center_y": 0.95}
+                icon:"account"
+                elevation: 5
+                right_action_items: [["account", lambda x: x]]
+
+            MDLabel:
+                pos_hint: {"center_y": 0.90}
+                color: 0,100/255.0,0,1
+                text: "SEARCH MARKING"
+                pos_hint: {"center_y": 0.63}
+                halign: 'center'
+                font_style: "H5"
+
+            MDDropDownItem:
+                id: markings
+                pos_hint: {"center_y": 0.8}
+                text: 'PETE'
+                on_release: root.menu.open()
+
+
+
+<AccInfo>:
+    name: 'acc'
+
+
+
+
