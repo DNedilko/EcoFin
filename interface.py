@@ -65,9 +65,11 @@ class Registration(Screen):
             else:
                 invalidForm()
                 self.reset()
+                return '3'
         else:
             invalidForm()
             self.reset()
+            return '3'
 
     def log(self):
         self.reset()
@@ -94,39 +96,57 @@ def Alr():
     pop.open()
 
 
+
 class Main(Screen):
-    def __init__(self,**kwargs,):
-        super().__init__(**kwargs)
-        self.filename='mark.csv'
-        self.marks=None
-        self.file=None
-        menu_items=[]
-        self.marks={}
-        self.file=open(self.filename, 'r')
-        for i in self.file:
-            marking, data = str(i).split(" * ")
-            self.marks[marking] = (data)
-        self.file.close()
-        items=[]
-        for a in self.marks:
-            items.append(a[0])
+    # def __init__(self,**kwargs,):
+    #     super().__init__(**kwargs)
+    #     self.filename='mark.csv'
+    #     self.marks=None
+    #     self.file=None
+    #     menu_items=[]
+    #     self.marks={}
+    #     self.file=open(self.filename, 'r')
+    #     for i in self.file:
+    #         marking, data = str(i).split(" * ")
+    #         self.marks[marking] = (data)
+    #     self.file.close()
+    #     items=[]
+    #     for a in self.marks:
+    #         items.append(a[0])
+    #
+    #     menu_items=[{'icon':"recycle-variant",'text': f'{i}'}for i in items]
+    #     self.menu=MDDropdownMenu(
+    #         id='markings',
+    #         caller=self.screen.ids.drop_item,
+    #         items=menu_items,
+    #         position='center',
+    #         width_mult=4
+    #     )
+    #     self.menu.bind(on_release=self.set_item)
+    #
+    # def set_item(self, ins_menu, ins_menu_item):
+    #     self.screen.ids.drop_item.set_item(ins_menu.text)
+    #     self.menu.dismiss()
+    #
+    balance=900
+    def Bought(self,i):
+        if i > self.balance:
+            pop = MDDialog(size_hint=(0.4, 0.2), title='No enough coins on your balance!', radius=[20, 7, 20, 7],
+                           text=f'Your current balance {self.balance}')
+        else:
+            pop = MDDialog(size_hint=(0.4, 0.2), title='Thanks for your purchase!', radius=[20, 7, 20, 7],
+                           text=f'Your current balance {self.balance - i}')
+        pop.open()
 
-        menu_items=[{'icon':"recycle-variant",'text': f'{i}'}for i in items]
-        self.menu=MDDropdownMenu(
-            id='markings',
-            caller=self.screen.ids.drop_item,
-            items=menu_items,
-            position='center',
-            width_mult=4
-        )
-        self.menu.bind(on_release=self.set_item)
+    def rec(self, weight):
+        pop = MDDialog(size_hint=(0.4, 0.2), title='New record done!', radius=[20, 7, 20, 7],
+                           text=f'Your current balance {self.balance + int(weight)*10+0}({int(weight)*10+0} coins added)')
+        pop.open()
 
-    def set_item(self, ins_menu, ins_menu_item):
-        self.screen.ids.drop_item.set_item(ins_menu.text)
-        self.menu.dismiss()
 
     def build(self):
         return self.screen
+    pass
 
 class AccInfo(Screen):
     pass

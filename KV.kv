@@ -1,3 +1,7 @@
+<MyTile@SmartTileWithLabel>
+    size_hint_y: None
+    height: "240dp"
+
 ScreenManager:
     LogIn:
     Registration:
@@ -150,6 +154,44 @@ ScreenManager:
         MDBottomNavigationItem:
             name: 'shop'
             icon:"shopping"
+
+            MDGridLayout:
+                cols:2
+                adaptive_height: True
+                padding: dp(7),dp(7)
+                spacing: dp(7)
+                MyTile:
+                    source: '1.jpg'
+                    MDRaisedButton:
+                        text: "500"
+                        size_hint: 0.2,0.1
+                        pos_hint: {"center_x": 0.25, "center_y":0.1}
+                        on_press: root.Bought(500)
+                MyTile:
+                    source: '2.jpg'
+                    MDRaisedButton:
+                        text: "550"
+                        size_hint: 0.2,0.1
+                        pos_hint: {"center_x": 0.2, "center_y":0.1}
+                        on_press: root.Bought(550)
+
+                MyTile:
+                    source: '3.jpg'
+                    MDRaisedButton:
+                        text: "50"
+                        size_hint: 0.2,0.1
+                        pos_hint: {"center_x": 0.2, "center_y":0.1}
+                        on_press: root.Bought(50)
+
+                MyTile:
+                    source: '4.jpg'
+                    MDRaisedButton:
+                        text: "700"
+                        line_color: 0, 0, 0, 0
+                        size_hint: 0.2,0.1
+                        pos_hint: {"center_x": 0.2, "center_y":0.1}
+                        on_press: root.Bought(700)
+
             MDToolbar:
                 md_bg_color: 0,100/255.0,0,1
                 pos_hint: {"center_y": 0.95}
@@ -160,6 +202,21 @@ ScreenManager:
         MDBottomNavigationItem:
             name: 'stations'
             icon:"map-search"
+
+
+            MDLabel:
+                color: 0,100/255.0,0,1
+                text: "STATIONS LIST"
+                pos_hint: {"center_y": 0.8}
+                halign: 'center'
+                font_style: "H6"
+
+            MDIcon:
+                icon:"robot-off"
+                halign: 'center'
+                pos_hint: {'center_y':0.5}
+                color: 0,100/255.0,0,100/255.0
+                font_size:90
 
             MDToolbar:
                 md_bg_color: 0,100/255.0,0,1
@@ -173,6 +230,51 @@ ScreenManager:
             icon:"recycle"
             icon_size:50
 
+            MDIcon:
+                icon:'pencil-plus-outline'
+                halign: 'center'
+                pos_hint: {'center_y':0.75}
+                color: 0,100/255.0,0,1
+                font_size:100
+
+            MDTextFieldRound:
+                id:station
+                hint_text: "station code"
+                color_active: 213/255.0,245/255.0,223/255.0,96/255.0
+                normal_color: 1,1,1,1
+                line_color: 0,100/255.0,0,1
+                pos_hint: {"center_x": 0.5, "center_y": 0.44}
+                color: 1,1,1,1
+                size_hint: 0.4, None
+
+            MDTextFieldRound:
+                id:material
+                hint_text: "material"
+                color_active: 213/255.0,245/255.0,223/255.0,96/255.0
+                normal_color: 1,1,1,1
+                line_color: 0,100/255.0,0,1
+                pos_hint: {"center_x": 0.5, "center_y": 0.38}
+                color: 1,1,1,1
+                size_hint: 0.4, None
+
+            MDTextFieldRound:
+                id:weight
+                hint_text: "weight"
+                color_active: 213/255.0,245/255.0,223/255.0,96/255.0
+                normal_color: 1,1,1,1
+                line_color: 0,100/255.0,0,1
+                pos_hint: {"center_x": 0.5, "center_y": 0.32}
+                color: 1,1,1,1
+                size_hint: 0.4, None
+
+            MDRoundFlatButton:
+                text: "SIGN"
+                pos_hint: {"center_x": 0.5, "center_y":0.22}
+                md_bg_color: 0,100/255.0,0,1
+                text_color: 1,1,1,1
+                on_release: root.rec(weight.text)
+
+
             MDToolbar:
                 md_bg_color: 0,100/255.0,0,1
                 pos_hint: {"center_y": 0.95}
@@ -180,9 +282,25 @@ ScreenManager:
                 elevation: 5
                 right_action_items: [["account", lambda x: x]]
 
+
+
         MDBottomNavigationItem:
             name: 'records'
             icon:"sort"
+            MDLabel:
+                color: 0,100/255.0,0,1
+                text: "STATIONS LIST"
+                pos_hint: {"center_y": 0.8}
+                halign: 'center'
+                font_style: "H6"
+
+            MDIcon:
+                icon:"robot-off"
+                halign: 'center'
+                pos_hint: {'center_y':0.5}
+                color: 0,100/255.0,0,100/255.0
+                font_size:60
+
             MDToolbar:
                 md_bg_color: 0,100/255.0,0,1
                 pos_hint: {"center_y": 0.95}
@@ -203,19 +321,25 @@ ScreenManager:
                 right_action_items: [["account", lambda x: x]]
 
             MDLabel:
-                pos_hint: {"center_y": 0.90}
+                pos_hint: {"center_y": 0.80}
                 color: 0,100/255.0,0,1
                 text: "SEARCH MARKING"
-                pos_hint: {"center_y": 0.63}
                 halign: 'center'
                 font_style: "H5"
 
             MDDropDownItem:
                 id: markings
-                pos_hint: {"center_y": 0.8}
+                pos_hint: {"center_y": 0.7, "center_x": 0.5}
                 text: 'PETE'
                 on_release: root.menu.open()
 
+            MDLabel:
+                pos_hint: {"center_y": 0.4, "center_x": 0.5}
+                color: 0,100/255.0,0,1
+                text: "#1 - Polyethylene Terephthalate \n The easiest plastic to recycle and most commonly found in plastic water(soda) bottles and some food packaging. PETE is commonly recycled into fibers or polar fleece. It is not recommended for reuse which means it ends up in the recycling stream quickly."
+                halign: 'center'
+                font_style: "Subtitle1"
+                size_hint: 0.9,None
 
 
 <AccInfo>:
